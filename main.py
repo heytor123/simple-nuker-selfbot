@@ -24,10 +24,10 @@ o = commands.Bot(command_prefix="!", case_insensitive=True, self_bot=True, inten
 async def on_ready():
   print(f"""
 
-   Conectado {o.user.name}
+   Connected : {o.user.name}
    ID : {o.user.id}
 
-   Comandos:
+   Commands:
 
    !nuke - cocks the server
    !cdel - deletes all the channels
