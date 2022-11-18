@@ -1,0 +1,4 @@
+python
+discord.py
+discord
+aiohttp
